@@ -1,5 +1,5 @@
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbynv4pAZjYMvAXuKDp0W0yh7O7FB8XIIJGh833OoUoMr0IRjpxGuT1mxDWYcZE8UNYKLA/exec";
-// 1. 設定 30 題的資料清單
+// 1. 設定 24 題的資料清單
 const questions = [
     { //泰國大象
         video: "Q1MZgYDNDt0", 
@@ -7,7 +7,7 @@ const questions = [
         type:"Low_risk_Real",
         is_real: true, 
         is_trap: false,
-        nowtag: "未偵測到AI訊號。", 
+        nowtag: "真實影片。", 
         answer: "真實影片" 
     },
     { //泰妍與潤兒
@@ -16,7 +16,7 @@ const questions = [
         type:"Low_risk_Real",
         is_real: true,
         is_trap: false,
-        nowtag: "未偵測到AI訊號。", 
+        nowtag: "真實影片。", 
         answer: "真實影片" 
     }, 
     { //開鐵門
@@ -25,7 +25,7 @@ const questions = [
         type:"Low_risk_Real",
         is_real: true,
         is_trap: false,
-        nowtag: "未偵測到AI訊號。", 
+        nowtag: "真實影片。", 
         answer: "真實影片" 
     },
     { //入浴球
@@ -43,7 +43,7 @@ const questions = [
         type:"Low_risk_Real",
         is_real: true,
         is_trap: false,
-        nowtag: "未偵測到AI訊號。", 
+        nowtag: "真實影片。", 
         answer: "真實影片" 
     },
     { //戰地記者
@@ -52,7 +52,7 @@ const questions = [
         type:"High_risk_Real",
         is_real: true,
         is_trap: false,
-        nowtag: "未偵測到AI訊號。", 
+        nowtag: "真實影片。", 
         answer: "真實影片" 
     },
 
@@ -62,7 +62,7 @@ const questions = [
         type:"High_risk_Real",
         is_real: true,
         is_trap: false,
-        nowtag: "未偵測到AI訊號。", 
+        nowtag: "真實影片。", 
         answer: "真實影片" 
     },
     { //地震
@@ -71,7 +71,7 @@ const questions = [
         type:"High_risk_Real",
         is_real: true,
         is_trap: false,
-        nowtag: "未偵測到AI訊號。", 
+        nowtag: "真實影片。", 
         answer: "真實影片" 
     },
     { //炸湯圓
@@ -80,7 +80,7 @@ const questions = [
         type:"Low_risk_Real",
         is_real: true,
         is_trap: false,
-        nowtag: "未偵測到AI訊號。", 
+        nowtag: "真實影片。", 
         answer: "真實影片" 
     },
     { //楊紫瓊 陷阱題：真實影片但AI提示說有AI訊號
@@ -98,7 +98,7 @@ const questions = [
         type:"Low_risk_AI",
         is_real: false,
         is_trap: true,
-        nowtag: "未偵測到AI訊號。", 
+        nowtag: "真實影片。", 
         answer: "AI生成影片" 
     },
     { //木耳飲廣告
@@ -134,7 +134,7 @@ const questions = [
         type:"Low_risk_AI",
         is_real: false,
         is_trap: true,
-        nowtag: "未偵測到AI訊號。", 
+        nowtag: "真實影片。", 
         answer: "AI生成影片" 
     },
 
@@ -144,7 +144,7 @@ const questions = [
         type:"High_risk_AI",
         is_real: false,
         is_trap: true,
-        nowtag: "未偵測到AI訊號。", 
+        nowtag: "真實影片。", 
         answer: "AI生成影片" 
     },
     { //川普打架 陷阱題：AI影片但AI提示說沒有AI訊號
@@ -153,7 +153,7 @@ const questions = [
         type:"High_risk_AI",
         is_real: false,
         is_trap: true,
-        nowtag: "未偵測到AI訊號。", 
+        nowtag: "真實影片。", 
         answer: "AI生成影片" 
     },
     { //戰爭逃難
@@ -174,8 +174,8 @@ const questions = [
         nowtag: "AI資訊。", 
         answer: "AI生成影片" 
     },
-    { //愛迪達廣告
-        video: "L23TX4v-7h4", 
+    { //知恩晚安
+        video: "zz5k9l2Y9F0", 
         filename: "20.MP4",
         type:"Low_risk_AI",
         is_real: false,
@@ -198,7 +198,7 @@ const questions = [
         type:"High_risk_Real",
         is_real: true,
         is_trap: false,
-        nowtag: "未偵測到AI訊號。", 
+        nowtag: "真實影片。", 
         answer: "真實影片" 
     },
     { //龍捲風 陷阱題：真實影片但AI提示說有AI訊號
@@ -262,7 +262,7 @@ questions.push(...finalSequence);
 // prepareExperimentalFlow(questions);
 
 let timerInterval;
-let lastTrustScore = 6; // 預設起始信任值
+let lastTrustScore = 4; // 預設起始信任值
 let currentHintType = ""; 
 let currentIndex = 0;
 const userId = "Experimenter_" + crypto.randomUUID().split('-')[0].toUpperCase() + "_" + Date.now();
@@ -428,10 +428,10 @@ function renderNextQuestion() {
     let displayHint = "";
 
     // --- 完全給現行標籤 ---
-    if (lastTrustScore < 5) {
+    if (lastTrustScore < 3) {
         displayHint = q.nowtag;
         currentHintType = "Nowtag";
-    } else if (lastTrustScore > 8) {
+    } else if (lastTrustScore > 5) {
         displayHint = q.nowtag;
         currentHintType = "Nowtag";
     } else {
