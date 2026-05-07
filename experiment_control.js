@@ -280,10 +280,12 @@ function timeIsUp() {
         const target = document.querySelector(`input[name="p2_choice"][value="${p1Selected.value}"]`);
         if (target) target.checked = true;
     }
+
     // 1b. 若信任程度未選，自動選 4 分（普通）
     const trustAlreadyChecked = document.querySelector('input[name="trust-a"]:checked');
     if (!trustAlreadyChecked) {
-    const defaultTrust = document.querySelector('input[name="trust-a"][value="4"]');
+        console.log("時間到，自動帶入信任程度 4 分...");
+        const defaultTrust = document.querySelector('input[name="trust-a"][value="4"]');
         if (defaultTrust) defaultTrust.checked = true;
     }
 
@@ -303,7 +305,6 @@ function timeIsUp() {
 // 2. 切換邏輯
 document.querySelector('#go-to-step-2').addEventListener('click', () => {
     if(!document.querySelector('input[name="p1_choice"]:checked')) return alert("請先選擇答案");
-    
     // 1. 停止第一階段影片播放
     if (v1) {
         v1.src = "";
@@ -326,8 +327,7 @@ document.querySelector('#go-to-step-2').addEventListener('click', () => {
 
 document.querySelector('#go-to-step-3').addEventListener('click', () => {
     if(!document.querySelector('input[name="p2_choice"]:checked')) return alert("請先選擇答案");
-    const trust = document.querySelector('input[name="trust-a"]:checked');
-    if(!trust) return alert("請評分信任程度");
+    if(!document.querySelector('input[name="trust-a"]:checked')) return alert("請評分信任程度");
     // 1. 停止第二階段影片播放
     if (v2) {
         v2.src = "";
@@ -341,7 +341,7 @@ document.querySelector('#go-to-step-3').addEventListener('click', () => {
 
 // 3. 提交本題數據並換題
 document.querySelector('#submitButton').addEventListener('click', async function () {
-    
+    const trust = document.querySelector('input[name="trust-a"]:checked');
 
     this.disabled = true;
     this.querySelector('.spinner-border').classList.remove('d-none');
