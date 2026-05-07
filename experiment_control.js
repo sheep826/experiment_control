@@ -303,8 +303,7 @@ function timeIsUp() {
 // 2. 切換邏輯
 document.querySelector('#go-to-step-2').addEventListener('click', () => {
     if(!document.querySelector('input[name="p1_choice"]:checked')) return alert("請先選擇答案");
-    const trust = document.querySelector('input[name="trust-a"]:checked');
-    if(!trust) return alert("請評分信任程度");
+    
     // 1. 停止第一階段影片播放
     if (v1) {
         v1.src = "";
@@ -327,6 +326,8 @@ document.querySelector('#go-to-step-2').addEventListener('click', () => {
 
 document.querySelector('#go-to-step-3').addEventListener('click', () => {
     if(!document.querySelector('input[name="p2_choice"]:checked')) return alert("請先選擇答案");
+    const trust = document.querySelector('input[name="trust-a"]:checked');
+    if(!trust) return alert("請評分信任程度");
     // 1. 停止第二階段影片播放
     if (v2) {
         v2.src = "";
