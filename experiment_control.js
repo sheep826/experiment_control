@@ -480,18 +480,39 @@ function renderNextQuestion() {
     }
     window.scrollTo(0,0);
 }
+const noneCheckbox = document.getElementById('videotool8');
+    const otherCheckboxes = document.querySelectorAll('input[name="tool"]:not(#videotool8)');
+  
+    // 勾選「無使用經驗」時，取消所有其他選項
+    noneCheckbox.addEventListener('change', function () {
+      if (this.checked) {
+        otherCheckboxes.forEach(cb => cb.checked = false);
+      }
+    });
+  
+    // 勾選任何其他選項時，取消「無使用經驗」
+    otherCheckboxes.forEach(cb => {
+      cb.addEventListener('change', function () {
+        if (this.checked) {
+          noneCheckbox.checked = false;
+        }
+      });
+    });
 document.getElementById('demographicForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const submitBtn = this.querySelector('button[type="submit"]');
     submitBtn.disabled = true;
     submitBtn.innerText = "提交中...";
-
+    
     const formData = new FormData(this);
     const demoPayload = {
-        user_id: userId, // 使用同一個唯一 ID 關聯數據
-        gender: formData.get('gender'),
-        age: formData.get('age'),
-        education: formData.get('edu')
+        user_id:    userId,
+        gender:     formData.get('gender'),
+        age:        formData.get('age'),
+        education:  formData.get('edu'),
+        AIvideo_tool: formData.getAll('tool').join(','),  // 複選，逗號分隔
+        AIvideo_time:      formData.get('time'),           // 第5題
+        AIvideo_frequency: formData.get('frequency'),      // 第6題
     };
 
     try {
