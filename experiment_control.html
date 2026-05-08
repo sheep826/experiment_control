@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <h5 class="text-center my-2">您認爲此影片為真實影片還是AI生成影片？</h5>
+                            <h5 class="text-left my-2">Q1：您認爲此影片為真實影片還是AI生成影片？</h5>
                             <div class="form-check mb-3">
                                 <input type="radio" id="p1-real" class="form-check-input" name="p1_choice" value="真實影片">
                                 <label for="p1-real" class="form-label">真實影片</label>
@@ -72,8 +72,10 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <h5 id="ai-hint-text" class="text-center mt-3 alert alert-info">AI 提示加載中...</h5>
-                            <h5 class="text-center my-2">您認爲此影片為真實影片還是AI生成影片？</h5>
+                            <h5 id="ai-hint-text" class="text-left mt-3 alert alert-info">AI 提示加載中...</h5>
+                            <br>
+                            <hr>
+                            <h5 class="text-center my-2">Q1：您認爲此影片為真實影片還是AI生成影片？</h5>
                             <div class="form-check mb-3">
                                 <input type="radio" id="p2-real" class="form-check-input" name="p2_choice" value="真實影片">
                                 <label for="p2-real" class="form-label">真實影片</label>
@@ -82,8 +84,8 @@
                                 <input type="radio" id="p2-ai" class="form-check-input" name="p2_choice" value="AI生成影片">
                                 <label for="p2-ai" class="form-label">AI生成影片</label>
                             </div>
-                            <div class="row my-2 text-center">
-                                <h5>請問到目前為止您對AI輔助標籤的信任程度為何？</h5>
+                            <div class="row my-2 text-left">
+                                <h5>Q2：請問到目前為止您對AI輔助標籤的信任程度為何？</h5>
                                 <div class="btn-group btn-group w-100 mt-2 px-1">
                                     <input type="radio" class="btn-check" name="trust-a" id="t1" value="1"><label class="btn btn-outline-secondary" for="t1">非常不滿意</label>
                                     <input type="radio" class="btn-check" name="trust-a" id="t2" value="2"><label class="btn btn-outline-secondary" for="t2">不滿意</label>
@@ -223,8 +225,12 @@
                                       <label class="form-check-label" for="videotool7">Runway</label>
                                     </div>
                                     <div class="form-check">
-                                      <input class="form-check-input" type="checkbox" name="tool" value="nonetool" id="videotool8">
-                                      <label class="form-check-label" for="videotool8">無使用經驗</label>
+                                        <input class="form-check-input" type="checkbox" name="tool" value="otherstool" id="videotool8">
+                                        <label class="form-check-label" for="videotool8">其他工具</label>
+                                      </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" name="tool" value="nonetool" id="videotool9">
+                                      <label class="form-check-label" for="videotool9">無使用經驗</label>
                                     </div>
                                 </div>
                                 <!-- 使用AI生成影片工具多久 -->

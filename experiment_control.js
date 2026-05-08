@@ -318,7 +318,7 @@ document.querySelector('#go-to-step-2').addEventListener('click', () => {
         
         setTimeout(() => {
             nextBtn.disabled = false; // 5秒後解鎖
-            nextBtn.innerText = "前往第三階段"; // 恢復文字
+            nextBtn.innerText = "前往第三步驟"; // 恢復文字
         }, 5000); // 5000 毫秒 = 5 秒
     }
     // 3. 【核心修改】在此時才啟動 30 秒倒數
@@ -480,8 +480,8 @@ function renderNextQuestion() {
     }
     window.scrollTo(0,0);
 }
-const noneCheckbox = document.getElementById('videotool8');
-    const otherCheckboxes = document.querySelectorAll('input[name="tool"]:not(#videotool8)');
+const noneCheckbox = document.getElementById('videotool9');
+    const otherCheckboxes = document.querySelectorAll('input[name="tool"]:not(#videotool9)');
   
     // 勾選「無使用經驗」時，取消所有其他選項
     noneCheckbox.addEventListener('change', function () {
